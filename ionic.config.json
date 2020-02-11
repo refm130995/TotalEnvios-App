@@ -1,0 +1,7 @@
+{
+  "name": "totalenvios",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

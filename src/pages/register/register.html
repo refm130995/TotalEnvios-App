@@ -1,0 +1,48 @@
+<toolbar>
+</toolbar>
+
+<ion-content padding>
+  <div class="form" padding-left padding-right [formGroup]="myForm">
+    <p style="color: #005574;font-size: 2.3rem;" text-center>
+      <b>
+        Registro
+      </b>
+    </p>
+    <ion-list>
+
+      <ion-item>
+        <ion-label>Correo electrónico</ion-label>
+        <ion-input type="text" text-right type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-label class="ion-text-center" color="danger" *ngIf="(myForm.get('email').errors && myForm.get('email').dirty) && myForm.get('email').hasError('required')">Este campo es requerido</ion-label>
+      <ion-label  class="ion-text-center" color="danger" *ngIf="(myForm.get('email').errors && myForm.get('email').dirty)">El correo electrónico  no es válido</ion-label>
+      <div class="d-flex">
+        <ion-item>
+          <ion-label>Contraseña</ion-label>
+          <ion-input  text-right type="text" formControlName="password" *ngIf="pass"></ion-input>
+          <ion-input  text-right type="password" formControlName="password" *ngIf="!pass"></ion-input>
+        </ion-item>
+        <ion-icon name="ios-eye-outline" class="text-light eye-icon" (click)="show()" [ngClass]="{'active': pass}"></ion-icon>
+        <ion-label color="danger" *ngIf="(myForm.get('password').errors && myForm.get('password').dirty) && myForm.get('password').hasError('required')">Este campo es requerido</ion-label>
+      </div>
+      <div class="d-flex">
+        <ion-item>
+          <ion-label>Repita la Contraseña</ion-label>
+          <ion-input  text-right type="text" formControlName="passwordR" *ngIf="pass"></ion-input>
+          <ion-input  text-right type="password" formControlName="passwordR" *ngIf="!pass"></ion-input>
+        </ion-item>
+        <ion-icon name="ios-eye-outline" class="text-light eye-icon" (click)="show()" [ngClass]="{'active': pass}"></ion-icon>
+        <ion-label color="danger" *ngIf="(myForm.get('passwordR').errors && myForm.get('passwordR').dirty) && myForm.get('passwordR').hasError('required')">Este campo es requerido</ion-label>
+        <ion-label color="danger" *ngIf="(myForm.get('passwordR').errors && myForm.get('passwordR').dirty) && myForm.get('passwordR').hasError('required') && myForm.get('passwordR')!=myForm.get('password')">Este campo es requerido</ion-label>
+      </div>
+    </ion-list>
+    <button ion-button full class="bg-thime btn-round btn-text" (click)="doLogin()" [disabled]="myForm.get('password').errors || myForm.get('passwordR').errors || myForm.get('password').errors != myForm.get('passwordR').errors">Registrarse</button>
+    <p text-center>¿Ya tienes una cuenta? <a (click)="goToSignIn()"> Ingresar</a></p>
+    <p text-center>
+      <small>
+        TotalEnvíos
+        <span class="text-sky">2020 </span>
+      </small>
+    </p>
+  </div>
+</ion-content>

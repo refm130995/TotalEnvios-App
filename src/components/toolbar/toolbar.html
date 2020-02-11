@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+<!--       <button ion-button menuToggle icon-only>
+          <ion-icon name='menu' style="color: #005672 !important;"></ion-icon>
+        </button> -->
+          <ion-title> <img src="./assets/imgs/logototalenvio.png">
+          </ion-title>
+          <ion-buttons end *ngIf="currentUser()">
+            <button ion-button icon-only (click)="exit()">
+              <ion-icon name="md-exit"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-navbar>
+</ion-header>

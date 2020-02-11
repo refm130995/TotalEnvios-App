@@ -1,0 +1,71 @@
+<toolbar></toolbar>
+<ion-content padding>
+  <!--   <ion-list padding> -->
+  <ion-grid>
+    <ion-row text-center>
+      <ion-col col-12 style="border:none 0;" text-center>
+        <p style="color: #005574;font-size: 2.3rem;" text-center>
+          <b>
+            Contáctanos
+          </b>
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-bottom: 6rem;">
+      <ion-col col-12>
+        <div>
+          <ion-item padding-right>
+            <ion-input type="text" placeholder="Nombre" value=""></ion-input>
+          </ion-item>
+          <ion-item padding-right>
+            <ion-input type="text" placeholder="Teléfono" value=""></ion-input>
+          </ion-item>
+          <ion-item *ngIf="unity" style="border: solid 1px;border-radius: 20px; margin-top: 10px;">
+            <ion-label>Destino</ion-label>
+            <ion-select [(ngModel)]="data.country">
+              <ion-option value="Venezuela">Venezuela</ion-option>
+              <ion-option value="Colombia">Colombia</ion-option>
+              <ion-option value="Panama">Panama</ion-option>
+            </ion-select>
+          </ion-item>
+
+
+          <ion-item *ngIf="data.country == 'Venezuela'"
+            style="border: solid 1px;border-radius: 20px; margin-top: 10px;">
+            <ion-label>Estado</ion-label>
+            <ion-select [(ngModel)]="data.states" (ionChange)='getCities2($event)'>
+              <ng-container *ngFor="let item of state">
+                <ion-option [value]="item.name">{{item.name}}</ion-option>
+              </ng-container>
+
+            </ion-select>
+          </ion-item>
+          <ion-item *ngIf="data.country == 'Venezuela' && data.states"
+            style="border: solid 1px;border-radius: 20px; margin-top: 10px;">
+            <ion-label>Ciudad</ion-label>
+            <ion-select [(ngModel)]="data.city">
+              <ng-container *ngFor="let item of cities">
+                <ion-option [value]="item.city">{{item.city}}</ion-option>
+              </ng-container>
+
+            </ion-select>
+          </ion-item>
+          <ion-item padding-right>
+            <ion-input type="text" placeholder="Empresa (si tiene)" value=""></ion-input>
+          </ion-item>
+          <ion-item padding-right>
+            <ion-input type="text" placeholder="Asunto" value=""></ion-input>
+          </ion-item>
+          <ion-item padding-right>
+            <ion-input type="text" placeholder="Mensaje" value=""></ion-input>
+          </ion-item>
+          <button ion-button block style="border-radius: 10px;">Enviar</button>
+        </div>
+      </ion-col>
+
+
+
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

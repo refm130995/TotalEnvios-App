@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,500&display=swap');
+
+*{
+    font-family: 'Eina';
+   /*  font-size: 1.6rem; */
+}
+
+@font-face {
+    font-family: 'Eina';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/custom/Eina02-Regular.ttf');
+  }
+  
+  @font-face {
+    font-family: 'Eina';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../assets/fonts/custom/Eina02-SemiBold.ttf');
+  }
+  
+  @font-face {
+    font-family: 'Eina';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fonts/custom/Eina02-Bold.ttf');
+  }
+
+.toolbar-background{
+    background: color($colors, primary);
+}
+.txt-header{
+   /*  font-weight: bold; */
+    color: white;
+}
+img{
+    border-radius: 10px;
+}
+.txt-box{
+    position: relative;
+    top: 1rem;    
+}
+.back-button.show-back-button {
+    display: inline-block !important;
+    position: relative !important;
+    top: 1rem !important;
+    margin-right: 2rem !important;
+    background-color: white !important;
+    border-radius: 50% !important;
+    width: 44px !important;
+    height: 44px !important;
+}

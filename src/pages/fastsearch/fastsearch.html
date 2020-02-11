@@ -1,0 +1,14 @@
+<toolbar></toolbar>
+<ion-content>
+  <ion-grid style="position: absolute;top: 12%;">
+    <ion-row>
+      <ion-searchbar [(ngModel)]="searchTerm" placeholder="Buscar" (ionChange)="setFilteredItems()">
+      </ion-searchbar>
+    </ion-row>
+    <ion-row *ngFor="let item of searchItems">
+      <ion-item (click)="dismiss(item)">
+        {{item.box}}
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+</ion-content>

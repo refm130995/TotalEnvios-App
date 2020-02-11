@@ -1,0 +1,131 @@
+page-home {
+  .contentimg {
+    width: 100%;
+    height: 200px;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: initial;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: initial;
+    background-origin: content-box;
+    background-clip: content-box;
+    background-color: initial;
+  }
+
+  .swiper-slide img {
+    width: 100%;
+    height: 250px !important;
+  }
+
+  ion-slides {
+    height: auto !important;
+  }
+
+  ion-slide {
+    margin-bottom: .5rem;
+  }
+
+  img {
+    display: block;
+  }
+
+  .content-slider {
+    position: relative; 
+    top: 7rem;
+  }
+
+  .heading {
+    display: flex;
+    align-items: left;
+    font-weight: bold;
+    color: black;
+    margin: 10px 10px;
+    padding-top: 1.5rem;
+    font-family: 'Eina';
+    font-weight: 600;
+    font-style: medium;
+  }
+
+
+  .txt-title {
+    font-weight: bold;
+  }
+
+ .line {
+    width: 4rem;
+    height: .5rem;
+    background: color($colors, primary);
+    position: absolute;
+    top: 2.5rem;
+    left: 1rem;
+  }
+
+
+
+  .btn-segment {
+    position: relative;
+    top: 5em;
+  }
+
+  .arrow {
+    font-size: 3rem;
+    padding-right: .5rem;
+    position: relative;
+    bottom: .5rem;
+    font-weight: bold;
+    color: #D8252B;
+  }
+
+  h1 {
+    color: #ffff !important;
+    margin: 0 0 2px;
+    font-size: 2.4rem;
+    font-weight: bold !important;
+    font-family: 'Eina';
+    font-weight: 500;
+    font-style: medium;
+  }
+
+  .card p {
+    color: #fdfdfdf7 !important;
+    font-size: 1.35rem;
+    font-family: 'Eina';
+    font-weight: 300;
+    font-style: light;
+  }
+
+  ion-card img {
+    width: 7rem !important;
+    height: 7rem !important;
+  }
+  img{
+    border-radius: 0 !important;
+  }
+
+  .btn-card {
+    width: 100%;
+    height: 120px;
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    border-radius: 15px;
+
+    .txt {
+      float: left;
+      position: relative;
+      top: 3rem;
+      left: 1rem;
+    }
+
+    .img-box {
+      position: absolute;
+      right: 3rem;
+      top: 3rem;
+    }
+  }
+}

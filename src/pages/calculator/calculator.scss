@@ -1,0 +1,29 @@
+page-calculator {
+  .webView {
+    width: 350px;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+  }
+/*   ion-list {
+    padding-top: 6rem !important;
+  } */
+  .button-round{
+    border-radius: 64px;
+    display: block !important;
+    padding: 0 2.6rem;
+    margin: 0 auto !important;
+  }
+  .txt-title{
+    font-size: 2.3rem;
+    color: #005574;
+  }
+
+  .select-text{
+    overflow: initial !important;
+  }
+  ion-content {
+    position: absolute;
+    top: 5rem;
+}
+}

@@ -1,0 +1,210 @@
+<toolbar></toolbar>
+<ion-content padding style="margin-bottom: 10rem;">
+  <!--  <iframe class="webView" scrolling=yes src="http://totalenvios.com/totalEnvio/es/content/16-calculadora" frameborder="0"></iframe> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p class="txt-title" text-center>
+          <b> Calculadora de Envíos</b></p>
+        <p style="    font-size: 1.6rem;text-overflow: clip;white-space: normal;color: black;    margin: 1rem;"
+          text-center>
+          <b>Indique los datos solicitados a continuación y le daremos un estimado del valor del envío</b>
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin: 0 auto;">
+      <ion-list class="lista">
+        <ion-item no-lines>
+          <img src="./assets/imgs/total-envios-box.png" style="    width: 60%;
+        margin: 0 auto;
+        display: block;">
+
+        </ion-item>
+        <ion-item style="border: solid 1px;border-radius: 20px;">
+          <ion-label>Unidad de medida</ion-label>
+          <ion-select [(ngModel)]="unity" (ionChange)='converter($event)'>
+            <ion-option value="Imperial">
+              <ng-container *ngIf="unity == 'Imperial'">
+                Ingles
+              </ng-container>
+              <ng-container *ngIf="unity != 'Imperial'">
+                Sistema ingles
+              </ng-container>
+
+            </ion-option>
+            <ion-option value="Metrico">
+              <ng-container *ngIf="unity == 'Metrico'">
+                Decimal
+              </ng-container>
+              <ng-container *ngIf="unity != 'Metrico'">
+                Sistema decimal
+              </ng-container>
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item style="border: solid 1px;border-radius: 20px;margin-top: 10px;" *ngIf="unity">
+          <ion-label>Origen</ion-label>
+          <ion-select [(ngModel)]="origin">
+            <ion-option value="Miami">
+              Miami
+            </ion-option>
+            <ion-option value="Tulsa">
+              Tulsa
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item (click)="search()" *ngIf="unity" style="border: solid 1px;border-radius: 20px; margin-top: 10px;">
+          <ion-label>Busqueda rápida</ion-label>
+          <!--    <ion-select disabled>
+       </ion-select> -->
+        </ion-item>
+
+
+        <ng-container *ngIf="unity == 'Imperial'">
+          <ion-item *ngIf="unity == 'Imperial' && type.box">
+            <ion-input type="text" [(ngModel)]="type.box" readonly></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating *ngIf="unity">Ancho (pie)</ion-label>
+            <ion-input type="text" [(ngModel)]="type.W"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating *ngIf="unity">Alto (pie)</ion-label>
+            <ion-input type="text" [(ngModel)]="type.H"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating *ngIf="unity">Largo (pie)</ion-label>
+            <ion-input type="text" [(ngModel)]="type.L"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="unity == 'Imperial'">
+            <ion-label floating>Peso Lb </ion-label>
+            <ion-input type="text" [(ngModel)]="type.LIB"></ion-input>
+          </ion-item>
+        </ng-container>
+
+        <ng-container *ngIf="unity == 'Metrico'">
+          <ion-item *ngIf="unity == 'Metrico'">
+            <ion-input type="text" [(ngModel)]="data.box" readonly></ion-input>
+          </ion-item>
+          <ion-item *ngIf="unity">
+            <ion-label floating>Ancho (cm)</ion-label>
+            <ion-input type="text" [(ngModel)]="data.W" [disabled]="!unity"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="unity">
+            <ion-label floating>Alto (cm)</ion-label>
+            <ion-input type="text" [(ngModel)]="data.H" [disabled]="!unity"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="unity">
+            <ion-label floating>Largo (cm)</ion-label>
+            <ion-input type="text" [(ngModel)]="data.L" [disabled]="!unity"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="unity == 'Metrico'">
+            <ion-label floating>Peso Kg </ion-label>
+            <ion-input type="text" [(ngModel)]="data.kg"></ion-input>
+          </ion-item>
+        </ng-container>
+
+
+
+        <ion-item *ngIf="unity" style="border: solid 1px;border-radius: 20px; margin-top: 10px;">
+          <ion-label>Destino</ion-label>
+          <ion-select [(ngModel)]="data.country">
+            <ion-option value="Venezuela">Venezuela</ion-option>
+            <ion-option value="Colombia">Colombia</ion-option>
+            <ion-option value="Panama">Panama</ion-option>
+          </ion-select>
+        </ion-item>
+
+
+        <ion-item *ngIf="data.country == 'Venezuela' && unity"
+          style="border: solid 1px;border-radius: 20px; margin-top: 10px;">
+          <ion-label>Estado</ion-label>
+          <ion-select [(ngModel)]="data.states" (ionChange)='getCities2($event)'>
+            <ng-container *ngFor="let item of state">
+              <ion-option [value]="item.name">{{item.name}}</ion-option>
+            </ng-container>
+
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="data.country == 'Venezuela' && unity && data.states"
+          style="border: solid 1px;border-radius: 20px; margin-top: 10px;">
+          <ion-label>Ciudad</ion-label>
+          <ion-select [(ngModel)]="data.city">
+            <ng-container *ngFor="let item of cities">
+              <ion-option [value]="item.city">{{item.city}}</ion-option>
+            </ng-container>
+
+          </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf="unity" style="border: solid 1px;border-radius: 20px; margin-top: 10px;">
+          <ion-label>Tipo de envío</ion-label>
+          <ion-select [(ngModel)]="data.send">
+            <ng-container *ngFor="let item of transport">
+              <ion-option [value]="item.name">{{item.name}}</ion-option>
+            </ng-container>
+
+          </ion-select>
+        </ion-item>
+        <ion-grid *ngIf="unity">
+          <ion-row>
+            <ion-col col-8></ion-col>
+            <ion-col col-4>
+              <button ion-button round style="    border-radius: 50%;
+          width: 1rem;
+          height: 5rem;
+          color: white;" (click)="alertSecurity()">
+                <ion-icon name="help"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+
+        <ion-item *ngIf="unity" style="border: solid 1px;border-radius: 20px; margin-top: 10px;">
+          <ion-label>Seguro</ion-label>
+          <ion-toggle (ionChange)="secure_()" [(ngModel)]="security"></ion-toggle>
+        </ion-item>
+        <ion-item *ngIf="security">
+          <ion-label *ngIf="security" style="    font-size: inherit !important;
+        /* text-overflow: ellipsis; */
+        white-space: normal !important;">Precio del artículo en dólares</ion-label>
+          <ion-input type="text" [(ngModel)]="data.price" [disabled]="!security"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="unity" style="border: solid 1px;border-radius: 20px; margin-top: 10px;">
+          <ion-label>Otros cargos</ion-label>
+          <ion-toggle [(ngModel)]="others"></ion-toggle>
+        </ion-item>
+        <ion-item *ngIf="others">
+          <ion-label *ngIf="others" style="    font-size: inherit !important;
+        /* text-overflow: ellipsis; */
+        white-space: normal !important;">&#36;</ion-label>
+          <ion-input type="text" [(ngModel)]="data.others" [disabled]="!others"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="unity">
+          <ion-label floating>Nombre Completo</ion-label>
+          <ion-input type="text" [(ngModel)]="data.fullname" [disabled]='!data.country'></ion-input>
+        </ion-item>
+        <ion-item *ngIf="unity">
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" [(ngModel)]="data.email"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="unity" style="border: solid 1px;border-radius: 20px; margin-top: 10px;">
+          <ion-label>Forma de pago</ion-label>
+          <ion-select [(ngModel)]="data.billing">
+            <ng-container *ngFor="let item of billing">
+              <ion-option [value]="item.name">{{item.name}}</ion-option>
+            </ng-container>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+    <ion-row style="margin-bottom: 6rem;">
+      <ion-col col-12>
+        <button ion-button round *ngIf="unity" text-center (click)="calculate()" [disabled]="disabledBtn()">
+          Calcular</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

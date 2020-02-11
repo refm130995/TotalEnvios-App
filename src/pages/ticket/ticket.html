@@ -1,0 +1,786 @@
+<toolbar></toolbar>
+<!-- <ion-content padding>
+  <ion-grid *ngIf="!web" style="margin: 0 auto;">
+    <ion-row>
+      <ion-col col-12 style="border:none 0;">
+        <p style="color: #005574;font-size: 2.3rem;margin: 0;" text-center>
+          <b>
+            Cálculo estimado
+          </b>
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 *ngIf="data.unity == 'Imperial'" style="border:none 0;">
+        <p style="    font-size: 2rem;    margin: 0;"  text-center>
+          <b>Caja de</b> <b style="color: #D8252B;">{{redondear(data.W)}} pies x {{redondear(data.H)}} pies x {{redondear(data.L)}} pies</b> <br>
+           con un peso de <b style="color: #D8252B;">{{redondear(data.LIB)}} Lib</b> 
+        </p>
+      </ion-col>
+  
+      <ion-col col-12 *ngIf="data.unity != 'Imperial'" style="border:none 0;">
+        <p style="    font-size: 2rem;    margin: 0;" text-center>
+          <b>Caja de</b> <b style="color: #D8252B;">{{data.W}}cm x {{data.H}}cm x {{data.L}}cm</b> <br>
+          con un peso de <b style="color: #D8252B;">{{redondear(data.kg)}} Kg</b> 
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        Tipo de envío:
+      </ion-col>
+      <ion-col col-6>
+       {{data.send}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        País:
+      </ion-col>
+      <ion-col col-6>
+       {{data.country}}
+      </ion-col>
+    </ion-row>
+    <ion-row  *ngIf="data.country == 'Venezuela'">
+      <ion-col col-6>
+        Estado:
+      </ion-col>
+      <ion-col col-6>
+       {{data.states}}
+      </ion-col>
+    </ion-row >
+        <ion-row *ngIf="data.country == 'Venezuela'">
+      <ion-col col-6>
+        Ciudad:
+      </ion-col>
+      <ion-col col-6>
+       {{data.city}}
+      </ion-col>
+    </ion-row>
+    <ion-row> 
+      <ion-col col-6>
+        Método de pago:
+      </ion-col>
+      <ion-col col-6>
+     {{data.billing}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        Nombre:
+      </ion-col>
+      <ion-col col-6>
+     {{data.fullname}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        Correo electrónico:
+      </ion-col>
+      <ion-col col-6>
+     {{data.email}}
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="data.secure">
+      <ion-col col-6>
+        Asegurado:
+      </ion-col>
+      <ion-col col-6>
+        <ion-icon name="md-checkbox" style="color: green;"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="data.secure">
+      <ion-col col-6>
+        Precio del artículo:
+      </ion-col>
+      <ion-col col-6>
+        $ {{data.price}}
+      </ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <ion-col col-12 style="border:none 0;padding-top: 3rem !important;">
+        <p style="color: black;
+        font-size: 2.5rem;     margin: 0;" text-center>
+          <b>
+         TOTAL APROX. $ <b style="color:#D8252B;">{{redondear(total)}}</b>
+          </b>
+        </p> 
+      </ion-col>
+    </ion-row>
+    <ion-row  style="margin-bottom: 6rem;">
+      <ion-col col-9 style="border:none 0;text-align: left;">
+        <p style="color: #005574;font-size: 1.6rem;display: table;    margin: 0;">
+          <img src="./assets/imgs/clock-totalenvios.png" alt="" style="    width: 3rem;">
+          <b style="display: table-cell;vertical-align: middle;    font-size: 1.7rem !important;">
+            Tiempo estimado de entrega {{time}}.
+          </b>
+          </p>
+        
+      </ion-col>
+      <ion-col col-3 style="border: solid 0px !important;">  <ion-fab right>
+        <button ion-fab mini (click)="share()"><ion-icon name="md-share"></ion-icon></button>
+      </ion-fab></ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="web" style="margin: 0 auto;">
+    <ion-row>
+      <ion-col col-12 style="border:none 0;">
+        <p style="color: #005574;font-size: 2.3rem;margin: 0;" text-center>
+          <b>
+            Cálculo estimado
+          </b>
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 *ngIf="unity == 'Imperial'" style="border:none 0;">
+        <p style="    font-size: 2rem;    margin: 0;"  text-center>
+          <b>Caja de</b> <b style="color: #D8252B;">{{redondear(W)}} pies x {{redondear(H)}} pies x {{redondear(L)}} pies</b> <br>
+           con un peso de <b style="color: #D8252B;">{{redondear(LIB)}} Lib</b> 
+        </p>
+      </ion-col>
+  
+      <ion-col col-12 *ngIf="unity != 'Imperial'" style="border:none 0;">
+        <p style="    font-size: 2rem;    margin: 0;" text-center>
+          <b>Caja de</b> <b style="color: #D8252B;">{{W}}cm x {{H}}cm x {{L}}cm</b> <br>
+          con un peso de <b style="color: #D8252B;">{{kg}} Kg</b>
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        Tipo de envío:
+      </ion-col>
+      <ion-col col-6>
+       {{send}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        País:
+      </ion-col>
+      <ion-col col-6>
+       {{country}}
+      </ion-col>
+    </ion-row>
+    <ion-row  *ngIf="country == 'Venezuela'">
+      <ion-col col-6>
+        Estado:
+      </ion-col>
+      <ion-col col-6>
+       {{states}}
+      </ion-col>
+    </ion-row >
+        <ion-row *ngIf="country == 'Venezuela'">
+      <ion-col col-6>
+        Ciudad:
+      </ion-col>
+      <ion-col col-6>
+       {{city}}
+      </ion-col>
+    </ion-row>
+    <ion-row> 
+      <ion-col col-6>
+        Método de pago:
+      </ion-col>
+      <ion-col col-6>
+     {{billing}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        Nombre:
+      </ion-col>
+      <ion-col col-6>
+     {{fullname}}
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="email">
+      <ion-col col-6>
+        Correo electrónico:
+      </ion-col>
+      <ion-col col-6>
+     {{email}}
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="secure == true">
+      <ion-col col-6>
+        Asegurado:
+      </ion-col>
+      <ion-col col-6>
+        <ion-icon name="md-checkbox" style="color: green;"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="secure == true">
+      <ion-col col-6>
+        Precio del artículo:
+      </ion-col>
+      <ion-col col-6>
+        $ {{price}}
+      </ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <ion-col col-12 style="border:none 0;padding-top: 3rem !important;">
+        <p style="color: black;
+        font-size: 2.5rem;     margin: 0;" text-center>
+          <b>
+         TOTAL APROX. $ <b style="color:#D8252B;">{{redondear(total)}}</b>
+          </b>
+        </p> 
+      </ion-col>
+    </ion-row>
+    <ion-row  style="margin-bottom: 6rem;">
+      <ion-col col-12 style="border:none 0;text-align: left;">
+        <p style="color: #005574;font-size: 1.6rem;display: table;    margin: 0;">
+          <img src="./assets/imgs/clock-totalenvios.png" alt="" style="    width: 3rem;">
+          <b style="display: table-cell;vertical-align: middle;    font-size: 1.7rem !important;">
+            Tiempo estimado de entrega {{time}}.
+          </b>
+          </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content> -->
+
+<ion-content color="secondary" padding style="    position: relative;top: 10%;background-color: #f53d3d;padding-bottom:1rem;" *ngIf="!web">
+  <ion-grid class="card-flex" no-padding>
+    <ion-row>
+      <ion-col col-12 text-center>
+        <span class="total-price">
+          <div class="card-subtitle title-price">Cálculo estimado</div>
+        </span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center color="totalenvios1">
+
+        <ion-card class="welcome-card">
+
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="left">
+                    Monto flete
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div class="right">
+                    ${{redondear(data.flete)}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+  
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="left">
+                    Seguro (5%)
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div class="right" *ngIf="data.secure">
+                    ${{redondear(data.price * data.securityTax)}}
+                  </div>
+                  <div class="right" *ngIf="!data.secure">
+                    $0.00
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+  
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="left">
+                    Otros cargos
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div class="right"*ngIf="data.others">
+                    ${{data.others}}
+                  </div>
+                  <div class="right"*ngIf="!data.others">
+                    $0.00
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-item-divider style="background: #e9e9e9;">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="left" style="color: black;">
+                    Total monto
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div class="right total-text3" *ngIf="data.secure">
+                    ${{redondear(total+data.flete+data.price * data.securityTax+data.others)}}
+                  </div>
+                  <div class="right total-text3" *ngIf="!data.secure">
+                    ${{redondear(total+data.flete+data.others)}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-card-header>
+                  <div class="title-cal left">Método de pago</div>
+                  <div class="subtitle-cal left"><span class="total-text3">{{data.billingname}} ({{data.billingtax * 100}}%)</span></div>
+                </ion-card-header>
+              </ion-col>
+              <ion-col>
+                <div class="right price-mt-cal">
+                  ${{redondear(total * data.billingtax)}}
+              </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <ion-card-header>
+            <div class="total-text">Total a pagar</div>
+            <div class="price" *ngIf="data.secure"><small>$</small> {{redondear(total + data.flete + (data.price * data.securityTax) + data.others + (total * data.billingtax))}}</div>
+            <div class="price" *ngIf="!data.secure"><small>$</small> {{redondear(total + data.flete + data.others + (total * data.billingtax))}}</div>
+            <div class="total-text2" *ngIf="data.unity != 'Imperial'">Caja de <span class="total-text3">{{redondear(data.W)}} cm x {{redondear(data.H)}} cm <br>  x {{redondear(data.L)}} cm</span> con un peso <br> de 
+              <span class="total-text3">{{redondear(data.kg)}} kg</span>
+            </div>
+            <div class="total-text2" *ngIf="data.unity == 'Imperial'">Caja de <span class="total-text3">{{redondear(data.W)}} pies x {{redondear(data.H)}} pies <br>  x {{redondear(data.L)}} pies</span> con un peso <br> de 
+              <span class="total-text3">{{redondear(data.LIB)}} Lib</span>
+            </div>
+          </ion-card-header>
+
+          <button ion-button color="danger" class="center" style="color: white;" (click)="share()">
+            <span style="color:white;">
+              <ion-icon name="md-share" padding></ion-icon>Compartir
+             </span>
+          </button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="flex-grow: 1;padding-bottom: 30%;">
+      <ion-col text-center style="background-color: #f53d3d">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <div><img class="big space" src="assets/package.svg" style="margin: 0 auto;"></div>
+            <div class="total-text-info">Tiempo estimado de entrega de</div>
+            <div class="entrega">{{time}}</div>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Puede enviarnos una copia de éste cálculo y nosotros le ofreceremos mayor información </p>
+          </ion-card-content>
+
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Tipo de envío
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{data.send}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    País
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{data.country}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-item-divider *ngIf="data.country == 'Venezuela'">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Estado
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{data.states}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-item-divider *ngIf="data.country == 'Venezuela'">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Ciudad
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{data.city}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+         <!--  <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Método de pago
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{data.billingname}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider> -->
+
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Nombre
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{data.fullname}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Correo electrónico
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{data.email}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+          
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <!--   
+    <ion-row>
+      <ion-col text-center style="background-color: #f7f7f7">
+        <p>Example text</p>
+      </ion-col>
+    </ion-row> -->
+  </ion-grid>
+</ion-content>
+<ion-content color="secondary" padding style="    position: relative;top: 10%;background-color: #f53d3d;padding-bottom:1rem;" *ngIf="web">
+  <ion-grid class="card-flex" no-padding>
+    <ion-row>
+      <ion-col col-12 text-center>
+        <span class="total-price">
+          <div class="card-subtitle title-price">Cálculo estimado</div>
+        </span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center color="totalenvios1">
+
+        <ion-card class="welcome-card">
+
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="left">
+                    Monto flete
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div class="right">
+                    ${{redondear(flete)}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+  
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="left">
+                    Seguro (5%)
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div class="right" *ngIf="secure">
+                    ${{seguro}}
+                  </div>
+                  <div class="right" *ngIf="!secure">
+                    $0.00
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+  
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="left">
+                    Otros cargos
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div class="right"*ngIf="others">
+                    ${{others}}
+                  </div>
+                  <div class="right"*ngIf="!others">
+                    $0.00
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-item-divider color="light">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="left" style="color: black;">
+                    Total monto
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div class="right total-text3" *ngIf="secure">
+                    ${{totalmonto}}
+                  </div>
+                  <div class="right total-text3" *ngIf="!secure">
+                    ${{totalmonto}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-card-header>
+                  <div class="title-cal left">Método de pago</div>
+                  <div class="subtitle-cal left"><span class="total-text3">{{billingname}} ({{billingtax * 100}}%)</span></div>
+                </ion-card-header>
+              </ion-col>
+              <ion-col>
+                <div class="right price-mt-cal">
+                  ${{redondear(total * billingtax)}}
+              </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <ion-card-header>
+            <div class="total-text">Total a pagar</div>
+            <div class="price" *ngIf="secure"><small>$</small> {{totalpay}}</div>
+            <div class="price" *ngIf="!secure"><small>$</small> {{totalpay}}</div>
+            <div class="total-text2" *ngIf="unity != 'Imperial'">Caja de <span class="total-text3">{{redondear(W)}} cm x {{redondear(H)}} cm <br>  x {{redondear(L)}} cm</span>con un peso <br> de 
+              <span class="total-text3">{{redondear(kg)}} kg</span>
+            </div>
+            <div class="total-text2" *ngIf="unity == 'Imperial'">Caja de <span class="total-text3">{{redondear(W)}} pies x {{redondear(H)}} pies <br>  x {{redondear(L)}} pies</span>con un peso <br> de 
+              <span class="total-text3">{{redondear(LIB)}} Lib</span>
+            </div>
+          </ion-card-header>
+
+         <!--  <button ion-button color="danger" class="center" style="color: white;" (click)="share()">
+            <ng-container>
+             <span style="color:white;">
+              <ion-icon name="md-share" padding></ion-icon>Compartir
+             </span>
+            </ng-container>
+          </button> -->
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="flex-grow: 1;padding-bottom: 30%;">
+      <ion-col text-center style="background-color: #f53d3d !important">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <div><img class="big space" src="assets/package.svg" style="margin: 0 auto;"></div>
+            <div class="total-text-info">Tiempo estimado de entrega de</div>
+            <div class="entrega">{{time}}</div>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Puede enviarnos una copia de éste cálculo y nosotros le ofreceremos mayor información </p>
+          </ion-card-content>
+
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Tipo de envío
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{send}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    País
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{country}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-item-divider *ngIf="country == 'Venezuela'">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Estado
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{states}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-item-divider *ngIf="country == 'Venezuela'">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Ciudad
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{city}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+   <!--        <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Método de pago
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{billingname}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider> -->
+
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Nombre
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{fullname}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    Correo electrónico
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    {{email}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+          
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <!--   
+    <ion-row>
+      <ion-col text-center style="background-color: #f7f7f7">
+        <p>Example text</p>
+      </ion-col>
+    </ion-row> -->
+  </ion-grid>
+</ion-content>

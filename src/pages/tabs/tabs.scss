@@ -1,0 +1,62 @@
+page-tabs {
+    ion-icon {
+        &[class*="custom-"] {
+          mask-size: contain;
+          mask-position: 50% 50%;
+          mask-repeat: no-repeat;
+          background: currentColor;
+          width: 1em;
+          height: 1em;
+        }
+    
+        &[class*="custom-home"] {
+          mask-image: url(../assets/icon/home.svg);
+        }
+    
+        &[class*="custom-megaphone"] {
+          mask-image: url(../assets/icon/megaphone.svg);
+        }
+    
+        &[class*="custom-calculator"] {
+          mask-image: url(../assets/icon/calculator.svg);
+        } 
+        
+        &[class*="custom-whatsapp"] {
+            mask-image: url(../assets/icon/whatsapp.svg);
+        }
+
+        &[class*="custom-track"] {
+          mask-image: url(../assets/icon/track.svg);
+      }
+        }
+
+      /*   .tab-button-icon icon icon-ios ion-ios-custom-shipping-fast-solid-outline{
+          font-size: 6rem !important;
+          height: 5rem !important;
+          position: relative !important;
+          bottom: 5 px !important;
+        } */
+/* 
+        #tab-t0-3{
+          .tab-button-text{
+            position: relative;
+            bottom: 12px;
+          }
+        } */
+    .tab-button-text {
+        margin-top: 0;
+        margin-bottom: 1px;
+        min-height: 11px;
+        font-size: 1rem;
+    }
+    .tab-button[aria-selected=true] .tab-button-icon {
+      color: #ff555c !important;
+  }
+  .tab-button-icon {
+    color: #8a8a8f !important;
+}
+
+.tabs-md .tab-button[aria-selected=true] .tab-button-text{
+  font-size: 1rem !important;
+}
+}

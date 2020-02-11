@@ -1,0 +1,25 @@
+page-services-details {
+  .toolbar-background {
+    background: color($colors, secondary);
+  }
+
+  .banner {
+    width: 90%;
+    height: 60px;
+    margin: 0 auto;
+    display: block;
+    background: color($colors, light);
+  }
+
+  .content-txt {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+   
+  }
+
+  p{
+    color: rgba(138, 138, 138, 0.7294117647058823);
+  }
+}

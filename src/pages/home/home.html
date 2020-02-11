@@ -1,0 +1,89 @@
+<toolbar>
+</toolbar>
+<ion-content>
+    <div class="content-slider">
+        <ion-slides pager autoplay="5000">
+            <ion-slide *ngFor="let slide of slides">
+      <img [src]=slide.image alt="">
+            </ion-slide>
+        
+          </ion-slides>
+        </div>
+        <ng-container [ngSwitch]="option">  
+            <div class="products bg-blue" style="position: relative;top:7rem;" text-center *ngSwitchCase="'service'">
+ 
+              <h5 class="heading"> <i class="arrow"> ></i> ¿Deseas calcular tu carga?
+                </h5>
+              
+              <ion-grid style="padding: 0 !important;">
+                  <ion-row>
+                    <ion-col col-12 (click)="goCalculator()">
+                      <ion-card class="btn-card" style="background: #005571;">
+                        <ion-card-content>
+                          <div class="txt" text-left>
+                            <h1 style="color: white !important;">Aéreo</h1>
+                            <p style="color: white !important;"><!-- Carga mínima 5 libras --></p>
+                          </div>
+                          <div class="img-box">
+                            <img src="./assets/imgs/plane.png" alt="">
+                          </div>
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
+                    <ion-col col-12 (click)="goCalculator()">
+                        <ion-card class="btn-card" style="background: #D8252B;">
+                          <ion-card-content>
+                            <div class="txt" text-left>
+                                <h1 style="color: white !important;">Marítimo</h1>
+                              <p style="color: white !important;"><!-- Carga mínima 2 pie cúbico --></p>
+                            </div>
+                            <div class="img-box">
+                              <img src="./assets/imgs/cargo.png" alt="">
+                            </div>
+                          </ion-card-content>
+                        </ion-card>
+                      </ion-col>
+                  </ion-row>
+                </ion-grid>
+            </div>
+            <div class="products bg-blue" style="position: relative;top:8rem;" text-center *ngSwitchCase="'offerts'">
+                <h1 class="heading"> Ofertas del día
+                </h1>
+                <div class="line"></div>
+                <div class="products-scroll">
+                  <div class="products-container" style="width:70rem;">
+                    <div class="products-item" *ngFor="let slide of slides2">
+                      <ion-card (click)="goDetail()">
+                              <div class="img-box">
+                                      <img [src]=slide.service>
+                                    </div>
+                                    <h5 text-left class="txt-title">{{slide.title}}</h5>
+                      </ion-card>
+                    </div>
+                  </div>
+                </div>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-6 padding>
+                      <img src="./assets/imgs/1.jpg">
+                    </ion-col>
+                    <ion-col col-6 padding>
+                      <img src="./assets/imgs/2.jpg">
+                    </ion-col>
+                    <ion-col col-6 padding>
+                      <img src="./assets/imgs/1.jpg">
+                    </ion-col>
+                    <ion-col col-6 padding>
+                      <img src="./assets/imgs/2.jpg">
+                    </ion-col>
+                    <ion-col col-6 padding>
+                      <img src="./assets/imgs/1.jpg">
+                    </ion-col>
+                    <ion-col col-6 padding>
+                      <img src="./assets/imgs/2.jpg">
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+          </ng-container>
+</ion-content>
