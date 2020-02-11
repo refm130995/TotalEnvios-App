@@ -20,11 +20,11 @@ ionic cordova build android
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+I am use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Author
 
-* **Ramon Figuera** - *Initial work* - [PurpleBooth](https://github.com/refm130995)
+* **Ramon Figuera** - *Initial work* - [RFiguera](https://github.com/refm130995)
 
 ## License
 
